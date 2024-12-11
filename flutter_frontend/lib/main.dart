@@ -4,7 +4,11 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 Future<void> main() async {
-  await dotenv.load(fileName: ".env");
+  try {
+    await dotenv.load(fileName: ".env");
+  } catch (e) {
+    print("Error loading .env file: $e");
+  }
   runApp(MyApp());
 }
 
